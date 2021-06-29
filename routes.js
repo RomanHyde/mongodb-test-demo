@@ -11,17 +11,18 @@ router.get('/', async (req, res) => {
 });
 
 // post user information first and then confirm
-router.post('/',(req,res) => {
-    let artistName = req.body.artistName;
-    let song = req.body.song;
-    let album = req.body.album;
-    let song = new Song({
-        artistName : artistName,
-        song : song,
-        album : album
+router.post('/', async (req, res) => {
+    try {
+        const song = new Song({
+            artistName: req.body.artistName,
+            song: req.body.song,
+            album: req.body.album
         });
-    user.save();
-    res.status(201).send('I created a thing!');
+        await song.save();
+        res.status(201).json(song);
+    } catch (error) {
+        res.status(500).json(error);
+    }
 });
 
 module.exports = router;
