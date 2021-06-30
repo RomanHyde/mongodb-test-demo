@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const Song = require('./models/song');
+const Song = require('../models/song');
 
-// pull user info
+// Song route section
+// pull song info
 router.get('/', async (req, res) => {
     const songs = await Song.find({});
     // res.status(200).render('login');
@@ -10,7 +11,7 @@ router.get('/', async (req, res) => {
     res.status(200).json(songs);
 });
 
-// post user information first and then confirm
+// post song information first and then confirm
 router.post('/', async (req, res) => {
     try {
         const song = new Song({

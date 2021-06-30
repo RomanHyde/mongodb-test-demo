@@ -2,9 +2,8 @@
 
 const express = require('express');
 const mongoose = require('mongoose');
-const Song = require('./models/song');
-const router = require('./routes');
-const songRouter = require('./routes');
+const userRouter = require('./routes/userRouter');
+const songRouter = require('./routes/songRouter');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -20,6 +19,7 @@ db.on('error', console.error.bind(console,'MongoDB connection error:'));
 
 app.use(express.json());
 app.use('/song', songRouter);
+app.use('/user', userRouter);
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
