@@ -3,6 +3,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Song = require('./models/song');
+const User = require('./models/user');
 const router = require('./routes');
 const songRouter = require('./routes');
 
@@ -20,6 +21,7 @@ db.on('error', console.error.bind(console,'MongoDB connection error:'));
 
 app.use(express.json());
 app.use('/song', songRouter);
+// app.user('/user')
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
