@@ -17,7 +17,8 @@ router.post('/', async (req, res) => {
         const song = new Song({
             artistName: req.body.artistName,
             song: req.body.song,
-            album: req.body.album
+            album: req.body.album,
+            numberOneFan:req.body.numberOneFan
         });
         await song.save();
         res.status(201).json(song);
