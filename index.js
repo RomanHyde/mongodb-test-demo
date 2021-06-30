@@ -2,10 +2,8 @@
 
 const express = require('express');
 const mongoose = require('mongoose');
-const Song = require('./models/song');
-const User = require('./models/user');
-const userRouter = require('./routes');
-const songRouter = require('./routes');
+const userRouter = require('./routes/userRouter');
+const songRouter = require('./routes/songRouter');
 
 const app = express();
 const port = process.env.PORT || 5000;
